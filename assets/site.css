@@ -300,3 +300,9 @@ main:has(>:last-child.band-curtain)+.site-footer .scallop{--sc:#430a10}
 .brand-logo{display:block;height:94px;width:auto}
 .brand:hover .brand-logo,.brand:focus-visible .brand-logo{filter:brightness(1.12)}
 @media (max-width:600px){.site-header .bar{min-height:84px}.brand-logo{height:70px}}
+
+/* Dropdown: full-width rows; current page marked with a gold bar so it never looks like a second hover */
+nav .sub li{display:block}
+nav .sub a{display:block;white-space:nowrap;padding:.55rem .9rem}
+nav .sub a[aria-current]{background:none;box-shadow:inset 3px 0 0 var(--gold);color:var(--gold-2)}
+nav .sub a:hover,nav .sub a:focus-visible{background:rgba(251,193,84,.16);color:var(--gold-2)}
