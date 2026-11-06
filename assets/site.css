@@ -306,3 +306,7 @@ nav .sub li{display:block}
 nav .sub a{display:block;white-space:nowrap;padding:.55rem .9rem}
 nav .sub a[aria-current]{background:none;box-shadow:inset 3px 0 0 var(--gold);color:var(--gold-2)}
 nav .sub a:hover,nav .sub a:focus-visible{background:rgba(251,193,84,.16);color:var(--gold-2)}
+
+/* Reviews page: clear space between each group of quotes and the next heading */
+.review-group{margin:0 0 1.25rem}
+.cards3+.review-group{margin-top:clamp(3rem,6vw,4.5rem)}
