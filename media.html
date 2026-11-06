@@ -17,8 +17,17 @@ button{margin-top:1rem;width:100%;font:700 1.05rem system-ui,sans-serif;padding:
 function u8(s){return Uint8Array.from(atob(s),function(c){return c.charCodeAt(0)})}
 function open(raw){return crypto.subtle.importKey('raw',raw,'AES-GCM',false,['decrypt']).then(function(k){return crypto.subtle.decrypt({name:'AES-GCM',iv:u8(P.iv)},k,u8(P.ct))}).then(function(b){var h=new TextDecoder().decode(b);return new Promise(function(res){function go(){document.open();document.write(h);document.close();res()}if(document.readyState==='complete')setTimeout(go,0);else window.addEventListener('load',function(){setTimeout(go,0)},{once:true})})})}
 function fromPw(p){return crypto.subtle.importKey('raw',new TextEncoder().encode(p),'PBKDF2',false,['deriveKey']).then(function(b){return crypto.subtle.deriveKey({name:'PBKDF2',salt:u8(P.salt),iterations:P.iter,hash:'SHA-256'},b,{name:'AES-GCM',length:256},true,['decrypt'])}).then(function(k){return crypto.subtle.exportKey('raw',k)})}
-var saved=null;try{saved=sessionStorage.getItem(S)}catch(x){}
-var m=document.querySelector('main');if(saved){m.style.visibility='hidden';open(u8(saved)).catch(function(){try{sessionStorage.removeItem(S)}catch(x){}m.style.visibility='';pw.focus()})}else{pw.focus()}
-f.addEventListener('submit',function(ev){ev.preventDefault();e.textContent='Opening…';fromPw(pw.value).then(function(raw){return open(raw).then(function(){try{sessionStorage.setItem(S,btoa(String.fromCharCode.apply(null,new Uint8Array(raw))))}catch(x){}})}).catch(function(){e.textContent='That password did not work. Please try again.';pw.select()})});
+// Sign-in is remembered in this browser for 14 days, across tabs. The password itself is kept so a page
+// encrypted with a different key (e.g. a cached copy from before an update) can still be opened;
+// derived keys are cached per salt so each page doesn't redo the slow key stretching.
+var DAY=864e5,T=14*DAY,LS={get:function(k){try{var v=JSON.parse(localStorage.getItem(k)||'null');if(v&&v.t>Date.now()-T)return v.v}catch(x){}return null},set:function(k,v){try{localStorage.setItem(k,JSON.stringify({t:Date.now(),v:v}))}catch(x){}},del:function(k){try{localStorage.removeItem(k)}catch(x){}}};
+var KS='hp-preview-key:'+P.salt,PS='hp-preview-pw';
+function b64(raw){return btoa(String.fromCharCode.apply(null,new Uint8Array(raw)))}
+function unlock(p){return fromPw(p).then(function(raw){return open(raw).then(function(){LS.set(KS,b64(raw));LS.set(PS,p)})})}
+var m=document.querySelector('main'),savedKey=LS.get(KS),savedPw=LS.get(PS);
+if(savedKey||savedPw){m.style.visibility='hidden';
+  (savedKey?open(u8(savedKey)).catch(function(){LS.del(KS);if(savedPw)return unlock(savedPw);throw 0}):unlock(savedPw))
+  .catch(function(){LS.del(PS);m.style.visibility='';pw.focus()})}else{pw.focus()}
+f.addEventListener('submit',function(ev){ev.preventDefault();e.textContent='Opening…';unlock(pw.value).catch(function(){e.textContent='That password did not work. Please try again.';pw.select()})});
 })();
 </script></body></html>
