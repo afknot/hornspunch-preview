@@ -1,7 +1,4 @@
 (function(){
-  // shrink the hanging logo into the header bar once the page is scrolled
-  var de=document.documentElement,tick=false;function sc(){de.classList.toggle('scrolled',window.scrollY>40);tick=false}
-  window.addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(sc)}},{passive:true});sc();
   var b=document.querySelector('.menu-btn'),n=document.getElementById('nav');
   if(b&&n){b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o)})}
   document.addEventListener('keydown',function(e){if(e.key!=='Escape')return;
