@@ -310,3 +310,12 @@ nav .sub a:hover,nav .sub a:focus-visible{background:rgba(251,193,84,.16);color:
 /* Reviews page: clear space between each group of quotes and the next heading */
 .review-group{margin:0 0 1.25rem}
 .cards3+.review-group{margin-top:clamp(3rem,6vw,4.5rem)}
+
+/* Home hero: the show's logo leads, on a dark plaque so its black linework reads against the curtain */
+.hero-logo{margin:0 0 1.4rem;width:min(100%,360px);padding:16px 18px 12px;background:radial-gradient(120% 90% at 50% 25%,#1d0a0b,#0b0505);border:2px solid var(--gold);border-radius:22px;box-shadow:0 18px 40px rgba(0,0,0,.5),inset 0 0 0 5px #0b0505,inset 0 0 0 6px rgba(251,193,84,.45)}
+.hero-logo img{display:block;width:100%;height:auto}
+.hero h1{font-size:clamp(1.9rem,3.6vw,2.9rem)}
+@media (max-width:900px){.hero-logo{margin-left:auto;margin-right:auto;width:min(100%,300px)}}
+
+/* The Show page: Mark's original Horn's Punch lettering for this one heading */
+h1.classic-type{font-family:"Horns Punch",Georgia,"Times New Roman",serif;font-weight:400;letter-spacing:.01em;line-height:1.08;font-size:clamp(2.6rem,5.4vw,4.2rem)}
