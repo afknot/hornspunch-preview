@@ -312,7 +312,9 @@ nav .sub a:hover,nav .sub a:focus-visible{background:rgba(251,193,84,.16);color:
 .cards3+.review-group{margin-top:clamp(3rem,6vw,4.5rem)}
 
 /* The Show page: Mark's original Horn's Punch lettering for this one heading */
-h1.classic-type{font-family:"Horns Punch",Georgia,"Times New Roman",serif;font-weight:400;letter-spacing:.01em;line-height:1.08;font-size:clamp(2.6rem,5.4vw,4.2rem)}
+/* Main headings use the original Horn's Punch lettering (as on the old site) */
+h1{font-family:"Horns Punch",Georgia,"Times New Roman",serif;font-weight:400;letter-spacing:.01em;line-height:1.08;font-size:clamp(2.4rem,5vw,3.9rem)}
+h1.classic-type{font-size:clamp(2.6rem,5.4vw,4.2rem)}
 
 /* Home hero, "centre stage": the puppet logo large in a soft spotlight on the curtain, everything centred below.
    (The hero photo in content/home.json is still used as the image when the home page is shared.) */
@@ -322,7 +324,7 @@ h1.classic-type{font-family:"Horns Punch",Georgia,"Times New Roman",serif;font-w
 .stage-logo img{display:block;width:100%;height:auto}
 .stage-logo:before{content:"";position:absolute;inset:-12% -14%;z-index:-1;background:radial-gradient(closest-side,rgba(8,3,3,.96) 55%,rgba(8,3,3,.75) 72%,rgba(8,3,3,0) 100%)}
 
-.stage h1{font-size:clamp(2rem,4vw,3.1rem);margin-left:auto;margin-right:auto}
+.stage h1{font-size:clamp(2.3rem,4.6vw,3.6rem);margin-left:auto;margin-right:auto}
 .stage .lede{margin-left:auto;margin-right:auto;max-width:640px}
 .stage .btn-row{justify-content:center}
 @media (max-width:900px){.stage-logo{width:min(100%,330px)}}
