@@ -331,3 +331,20 @@ h1.classic-type{font-size:clamp(2.6rem,5.4vw,4.2rem)}
 
 .hero-tagline{font-family:"Horns Punch",Georgia,"Times New Roman",serif;font-size:clamp(1.6rem,3vw,2.3rem);line-height:1.15;letter-spacing:.01em;margin-top:.4em}
 .side .vintage{margin:0 0 28px}.side .vintage figcaption{font-size:.85rem;color:var(--muted);margin-top:8px;font-style:italic}
+
+/* Masthead: new logo, slogan and phone above the menu bar; the bar keeps a small wordmark only once the masthead scrolls away */
+.masthead{background:radial-gradient(900px 260px at 50% 0,#4a0c13,transparent 75%),linear-gradient(180deg,#1a0708,#0e0707);color:#f6eedb}
+.mast{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:40px;padding-top:18px;padding-bottom:18px}
+.mast-logo{display:block;border-radius:12px}.mast-logo img{display:block;height:200px;width:auto}
+.mast-logo:hover img,.mast-logo:focus-visible img{filter:brightness(1.1)}
+.mast-text{text-align:center}
+.mast-usp{font-family:"Horns Punch",Georgia,"Times New Roman",serif;color:var(--gold-2);font-size:clamp(1.5rem,3.2vw,2.6rem);line-height:1.12;letter-spacing:.01em;margin:0 auto .35em;max-width:16em;text-wrap:balance}
+.mast-phone{margin:0;font-size:clamp(1.2rem,2vw,1.6rem);font-weight:700;letter-spacing:.06em}
+.mast-phone a{color:#f6eedb;text-decoration:none;border-bottom:2px solid var(--gold);padding-bottom:2px}
+.mast-phone a:hover,.mast-phone a:focus-visible{color:var(--gold-2)}
+.site-header .bar{min-height:64px;justify-content:center}
+.site-header .brand{display:none}
+.site-header.stuck .bar{justify-content:space-between}.site-header.stuck .brand{display:flex}
+.site-header .brand-logo{height:50px}
+@media (max-width:900px){.site-header .bar{justify-content:flex-end}.site-header.stuck .bar{justify-content:space-between}}
+@media (max-width:600px){.mast{grid-template-columns:1fr;justify-items:center;gap:10px;padding-top:14px;padding-bottom:14px}.mast-logo img{height:150px}.site-header .bar{min-height:56px}.site-header .brand-logo{height:42px}}

@@ -29,3 +29,6 @@
     dlg.addEventListener('close',function(){stage.innerHTML='';document.documentElement.style.overflow='';if(opener)opener.focus()});
   }
 })();
+
+(function(){var m=document.querySelector('.masthead'),h=document.querySelector('.site-header');if(!m||!h||!('IntersectionObserver' in window))return;
+new IntersectionObserver(function(e){h.classList.toggle('stuck',!e[0].isIntersecting)},{threshold:0}).observe(m);})();
