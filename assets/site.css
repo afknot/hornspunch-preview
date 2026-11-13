@@ -345,6 +345,6 @@ h1.classic-type{font-size:clamp(2.6rem,5.4vw,4.2rem)}
 .site-header .bar{min-height:64px;justify-content:center}
 .site-header .brand{display:none}
 .site-header.stuck .bar{justify-content:space-between}.site-header.stuck .brand{display:flex}
-.site-header .brand-logo{height:50px}
+.site-header .brand-logo{height:90px}
 @media (max-width:900px){.site-header .bar{justify-content:flex-end}.site-header.stuck .bar{justify-content:space-between}}
-@media (max-width:600px){.mast{grid-template-columns:1fr;justify-items:center;gap:10px;padding-top:14px;padding-bottom:14px}.mast-logo img{height:150px}.site-header .bar{min-height:56px}.site-header .brand-logo{height:42px}}
+@media (max-width:600px){.mast{grid-template-columns:1fr;justify-items:center;gap:10px;padding-top:14px;padding-bottom:14px}.mast-logo img{height:150px}.site-header .bar{min-height:56px}.site-header .brand-logo{height:76px}}
